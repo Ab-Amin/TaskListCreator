@@ -5,6 +5,18 @@ h2{
   text-align: right;
   margin-bottom: 0;
   color: white;
+  width: 100%;
+
+  display: flex;
+  justify-content: end;
+  align-items: end;
+
+  div{
+    background-color: rgba(232, 232, 232, 0.563);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+  }
   span{
     color: rgb(122, 4, 173);
   }
@@ -54,16 +66,41 @@ textarea {
   text-decoration-color: white;
 }
 
+#bg-video{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.origin{
+  z-index: 1;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: rgb(103, 22, 130);
+  a{
+    text-decoration: none;
+    color: rgb(103, 22, 130);
+  }
+}
+
 // =-=-=-=-=-|main|-=-=-=-=-=
 body{
   margin: 0 auto;
   // background-color: rgba(65, 14, 116, 0.685);
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  height: 100vh;
-  background: url('../img/QFXgC0j.jpeg') center/cover;
-  background-repeat: no-repeat;
+  // height: 100vh;
+  // background: url('../img/1661259788-1661259788-space-black-hole-live-wallpaper.mp4') center/cover;
+  // background-repeat: no-repeat;
   overflow: hidden;
   // color: white;
+
   
   main{
     display: flex;
@@ -82,7 +119,7 @@ body{
       > div{
         background-color: rgba(232, 232, 232, 0.563);
         // border: 1px solid black;
-        border-radius: 10px;
+        border-radius: 10px 0 10px 10px;
         padding: 20px;
       }
     }
