@@ -4,7 +4,7 @@ h2{
   text-transform: uppercase;
   text-align: right;
   margin-bottom: 0;
-  color: white;
+  color: rgb(239, 239, 239);
   width: 100%;
 
   display: flex;
@@ -12,7 +12,7 @@ h2{
   align-items: end;
 
   div{
-    background-color: rgba(232, 232, 232, 0.563);
+    background-color: rgba(232, 232, 232, 0.448);
     width: fit-content;
     padding: 5px;
     border-radius: 10px 10px 0 0;
@@ -83,11 +83,17 @@ textarea {
   position: absolute;
   bottom: 5px;
   right: 5px;
-  color: rgb(103, 22, 130);
+  color: rgb(187, 187, 187);
   a{
     text-decoration: none;
     color: rgb(103, 22, 130);
   }
+}
+
+.before-tasks{
+  color: rgb(8, 8, 8);
+  font-size: 14px;
+  margin: 5px 0 5px;
 }
 
 // =-=-=-=-=-|main|-=-=-=-=-=
@@ -117,7 +123,7 @@ body{
       width: 500px;
 
       > div{
-        background-color: rgba(232, 232, 232, 0.563);
+        background-color: rgba(232, 232, 232, 0.448);
         // border: 1px solid black;
         border-radius: 10px 0 10px 10px;
         padding: 20px;

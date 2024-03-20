@@ -75,8 +75,9 @@ confirmTask.addEventListener('click', () => {
 
   // Ajouter comme condition que si le nom existe déja => else
 
-  if (inputTaskName.value != "" /* && datePicker.value != "" */) {
+  if (inputTaskName.value != "" && datePicker.value != "") {
   
+    
     taskList.push({
       'taskname' : `${inputTaskName.value}`,
       'taskdate' : `${datePicker.value}`,
@@ -111,19 +112,6 @@ confirmTask.addEventListener('click', () => {
 let checkBox = document.querySelectorAll('.checkbox')
   
 taskListHtml.addEventListener('change', function(e) {
-
-  // if (e.target.classList.contains('checkbox')) {
-  //   if (e.target.checked) {
-  //     console.log("checked");
-  //     e.target.nextElementSibling.classList.add('completed')
-  //     e.target.setAttribute('data-state', 'complete')
-
-  //   } else {
-  //     console.log("unchecked");
-  //     e.target.nextElementSibling.classList.remove('completed')
-  //     e.target.setAttribute('data-state', 'incomplete')
-  //   }
-  // }
 
   if (e.target.hasAttribute('data-state')) {
     // addHtmlTask()
@@ -177,8 +165,28 @@ taskListHtml.addEventListener('change', function(e) {
 })
 
 
+// =-=-=-=-=-=-=-=| localStorage |=-=-=-=-=-=-=-=
 
-// test list copy to other list
+localStorage.setItem("ongoingList", JSON.stringify(ongoingtaskList))
+let parsedlSongoingList = JSON.parse((localStorage.getItem("ongoingList")))
+
+console.log(localStorage);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// test list copy to other list :
 
 // let firstList = []
 // let secondList = []
@@ -213,6 +221,3 @@ taskListHtml.addEventListener('change', function(e) {
 // .checked --> stackoverflow :)
 // .find() --> tutorialrepublic :)
 // .findIndex --> gpt :)
-
-
-
