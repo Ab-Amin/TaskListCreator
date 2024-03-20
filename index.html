@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- links -->
+  <link rel="stylesheet" href="Styles/style.min.css">
+
+  <title> my Tasks </title>
+</head>
+<body>
+  
+  
+  <main>
+    <!-- <img src="img/ER_Siofra_River.webp" alt=""> -->
+
+    <div>
+      <h2>Taks<span>Creator</span></h2>
+      <div class="task-creator">
+
+        <div>
+          <h3>Task name</h3>
+          <input type="text" class="input-text">
+        </div>
+
+        <div>
+          <h3>Date of the Taks</h3>
+          <input type="date" name="date" id="date-picker">
+        </div>
+
+        <div>
+          <h3>Description</h3>
+          <textarea name="desc" id="textarea" cols="30" rows="10"></textarea>
+        </div>
+
+        <div>
+          <button type="button" class="confirm-task">Add Task</button>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <h2>Task<span>List</span></h2>
+      <div class="task-list">
+
+        <div>
+          <h3>Task Done</h3>
+          <div class="task-list--details-done">
+            <!-- max details before scroll : 4 -->
+
+            <!-- <details>
+              <summary>
+                <div>
+                  <input type="checkbox" name="check" class="checkbox" data-state="incomplete" data-name="${taskList[i].taskname}"> 
+                  <span class="list-task-name">Name #1</span>
+                </div>
+                <p class="list-task-date">01-01-2024</p>
+              </summary>
+              <p class="list-task-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, esse?</p>
+            </details> -->
+          </div>
+        </div>
+        
+        <div class="task-list--tasks">
+          <div><button type="button">Sort</button></div>
+          <div class="task-list--details">
+            <!-- max details before scroll : 9 -->
+
+            <!-- <details>
+              <summary>
+                <div>
+                  <input type="checkbox" name="check" class="checkbox" data-state="incomplete" data-name="${taskList[i].taskname}"> 
+                  <span class="list-task-name">Name #1</span>
+                </div>
+                <p class="list-task-date">01-01-2024</p>
+              </summary>
+              <p class="list-task-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, esse?</p>
+            </details> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+
+  <script src="https://kit.fontawesome.com/99fa1db12f.js" crossorigin="anonymous"></script>
+  <script src="javascript/main.js"></script>
+</body>
+</html>

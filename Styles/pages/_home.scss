@@ -1,0 +1,142 @@
+
+// =-=-=-=-=-|general|-=-=-=-=-=
+h2{
+  text-transform: uppercase;
+  text-align: right;
+  margin-bottom: 0;
+  color: white;
+  span{
+    color: rgb(122, 4, 173);
+  }
+}
+h3{
+  margin-bottom: 0;
+  font-size: 16px;
+  color: rgb(111, 18, 151);
+  margin-bottom: 5px;
+}
+
+input, textarea, button{
+  background-color: transparent;
+  border: 1px solid black;
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+}
+input, textarea{
+  &:focus{
+    background-color: rgba(132, 120, 144, 0.5)
+  }
+}
+
+button{
+  transition: all .15s ease-in-out;
+  &:active{
+    background-color: rgba(129, 28, 173, 0.57);
+    scale: 0.98;
+    transition: all .15s ease-in-out;
+  }
+  &:focus{
+    // background-color: transparent;
+    transition: all .15s ease-in-out;
+  }
+}
+
+textarea { 
+  resize:vertical;
+  min-height: 30px;
+  margin-bottom: 1rem;
+}
+
+.completed{
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: white;
+}
+
+// =-=-=-=-=-|main|-=-=-=-=-=
+body{
+  margin: 0 auto;
+  // background-color: rgba(65, 14, 116, 0.685);
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  height: 100vh;
+  background: url('../img/QFXgC0j.jpeg') center/cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  // color: white;
+  
+  main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 600px;
+    width: 100%;
+    max-width: 1020px;
+    margin: 50px auto 0;
+
+    > div{
+      height: 100%;
+      width: 500px;
+
+      > div{
+        background-color: rgba(232, 232, 232, 0.563);
+        // border: 1px solid black;
+        border-radius: 10px;
+        padding: 20px;
+      }
+    }
+  }
+}
+
+.task-list--details, .task-list--details-done{
+  display: flex;
+  flex-direction: column;
+  max-height: 410px;
+
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(79, 17, 106) #00000000;
+  details{
+    width: 100%;
+    display: block;
+    padding: 10px 0 10px 0;
+    background-color: rgba(129, 28, 173, 0.57);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding-right: 5px;
+    summary{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      list-style: none;
+
+      input{
+        width: 20px;
+        margin-left: 0;
+      }
+      span{
+        color: black;
+      }
+      p{
+        margin: 0;
+        width: fit-content;
+      }
+      .list-task-name{
+        font-weight: bold;
+      }
+    }
+  }
+  details:last-of-type{
+    margin-bottom: 5px;
+  }
+}
+.task-list--details-done{
+  max-height: 190px;
+
+}
+
+
+
+
+
