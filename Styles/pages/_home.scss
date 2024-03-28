@@ -2,7 +2,7 @@
 // =-=-=-=-=-|general|-=-=-=-=-=
 h2{
   text-transform: uppercase;
-  text-align: right;
+  // text-align: right;
   margin-bottom: 0;
   color: rgb(239, 239, 239);
   width: 100%;
@@ -21,6 +21,24 @@ h2{
     color: rgb(122, 4, 173);
   }
 }
+.second-h2{
+  // text-align: left;
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+
+  div{
+    background-color: rgba(232, 232, 232, 0.448);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+  }
+  span{
+    color: rgb(122, 4, 173);
+  }
+}
+
 h3{
   margin-bottom: 0;
   font-size: 16px;
@@ -62,7 +80,7 @@ textarea {
 
 .completed{
   text-decoration: line-through;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 1px;
   text-decoration-color: white;
 }
 
@@ -94,6 +112,10 @@ textarea {
   color: rgb(8, 8, 8);
   font-size: 14px;
   margin: 5px 0 5px;
+}
+
+.dragging{
+  background-color: rgb(182, 84, 224)
 }
 
 // =-=-=-=-=-|main|-=-=-=-=-=
@@ -128,6 +150,9 @@ body{
         border-radius: 10px 0 10px 10px;
         padding: 20px;
       }
+      .task-list{
+        border-radius: 0 10px 10px 10px;
+      }
     }
   }
 }
@@ -148,6 +173,11 @@ body{
     border-radius: 5px;
     margin-top: 5px;
     padding-right: 5px;
+
+    cursor: grab;
+    &:active{
+      cursor: grabbing;
+    }
     summary{
       display: flex;
       flex-direction: row;

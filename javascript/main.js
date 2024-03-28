@@ -21,18 +21,27 @@ let taskListHtml = document.querySelector('.task-list')
 let taskDetails = document.querySelector('.task-list--details')
 let CompleteTaskDetails = document.querySelector('.task-list--details-done')
 
-let taskList = [] // every task ever added to the list
-let ongoingtaskList = [] // every ongoing task 
-let doneTaskList = [] // every task marcked as complete
+let taskList = JSON.parse(localStorage.getItem('taskList')) || []
+let ongoingtaskList = JSON.parse(localStorage.getItem('ongoingtaskList')) || []
+let doneTaskList = JSON.parse(localStorage.getItem('doneTaskList')) || []
+
 
 // =-=-=-=-=-=-=-=| functions |=-=-=-=-=-=-=-=
 
+// =-=-=| localStorage
+function storageLocal() {
+  // create a list in localstorage and convert it into string the list 
+  localStorage.setItem('ongoingtaskList', JSON.stringify(ongoingtaskList))
+  localStorage.setItem('doneTaskList', JSON.stringify(doneTaskList))
+}
+
 // =-=-=| add a task new task to the html task-list
 function addHtmlTask() {
+  storageLocal()
 
   for (let i = 0; i < ongoingtaskList.length; i++) {
     taskDetails.innerHTML += ` 
-      <details>
+      <details draggable="true">
         <summary>
           <div>
             <input type="checkbox" name="check" class="checkbox" data-state="incomplete" data-name="${ongoingtaskList[i].taskname}"> 
@@ -59,23 +68,25 @@ function addHtmlTask() {
       </details>      
     `
   }
-
   console.log(taskList);
   console.log(ongoingtaskList);
   console.log(doneTaskList);
   console.log('=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=');
+  console.log(localStorage);
+  
+}
+if (ongoingtaskList.length >= 0) {
+  addHtmlTask()
 }
 
 
-
 // =-=-=-=-=-=-=-=| addEventListeners |=-=-=-=-=-=-=-=
-
 // =-=-=| push to the taskList informations + addHtmlTask()
 confirmTask.addEventListener('click', () => {
 
   // Ajouter comme condition que si le nom existe déja => else
 
-  if (inputTaskName.value != "" && datePicker.value != "") {
+  if (inputTaskName.value != "" /*&& datePicker.value != ""*/) {
   
     
     taskList.push({
@@ -165,19 +176,57 @@ taskListHtml.addEventListener('change', function(e) {
 })
 
 
-// =-=-=-=-=-=-=-=| localStorage |=-=-=-=-=-=-=-=
+document.querySelector('.sort-button').addEventListener('click', () => {
+  // localStorage.clear()
+}) 
 
-localStorage.setItem("ongoingList", JSON.stringify(ongoingtaskList))
-let parsedlSongoingList = JSON.parse((localStorage.getItem("ongoingList")))
+// =-=-=-=-=-=-=-=| drag&drop |=-=-=-=-=-=-=-=
+// https://cepegra-labs.be/webdesign/fed2023/olivier/js/drag-drop/
 
-console.log(localStorage);
+let dragUs = document.querySelectorAll('.wrapper details') // element to drag&drop
+console.log(dragUs);
+let wrapper = document.querySelector('.wrapper') // wrapper of element to drag&drop
 
+dragUs.forEach(dragMe => {
 
+  dragMe.addEventListener('dragstart', () => {
+    console.log("drag start")
+    dragMe.classList.add('dragging')
+  })
+  
+  dragMe.addEventListener('dragend', () => {
+    dragMe.classList.remove('dragging')
+  })
+})
 
+wrapper.addEventListener('dragover', e => {
+  // On empêche le comportement par défaut de l'événement (si ça avait été un a ça aurait cliqué par ex)
+  e.preventDefault();
+  // On lance la fonction getDragAfterElement avec ses 2 arguments (zone de drop & les coordonnées verticales )
+  const afterElement = getDragAfterElement(wrapper, e.clientY);
+  const draggable = document.querySelector('.dragging');
 
+  if (afterElement == null) {
+    wrapper.appendChild(draggable);
+  } else {
+    wrapper.insertBefore(draggable, afterElement);
+  }
 
+})
 
-
+function getDragAfterElement(container, y) {
+  // On regroupe tous les li qui n'ont pas de classe dragging
+  const draggableElements = [...container.querySelectorAll('.wrapper details:not(.dragging)')];
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+    if (offset < 0 && offset > closest.offset) {
+      return { offset: offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
 
 
 
